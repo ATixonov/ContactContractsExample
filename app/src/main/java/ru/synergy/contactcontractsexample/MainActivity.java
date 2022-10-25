@@ -39,6 +39,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         listView = (ListView) findViewById(R.id.contactsList);
         name = (EditText) findViewById(R.id.name);
         phone = (EditText) findViewById(R.id.phone);
+        save = (Button) findViewById(R.id.save);
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -48,6 +49,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
                 Toast.makeText(getApplicationContext(), "Contact added", Toast.LENGTH_LONG).show();
             }
         });
+        show = (Button) findViewById(R.id.show);
         show.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
