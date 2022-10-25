@@ -40,25 +40,19 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         name = (EditText) findViewById(R.id.name);
         phone = (EditText) findViewById(R.id.phone);
         save = (Button) findViewById(R.id.save);
-        save.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String contactName = name.getText().toString();
-                String contactPhone = phone.getText().toString();
-                addContact(contactName, contactPhone);
-                Toast.makeText(getApplicationContext(), "Contact added", Toast.LENGTH_LONG).show();
-            }
+        save.setOnClickListener(v -> {
+            String contactName = name.getText().toString();
+            String contactPhone = phone.getText().toString();
+            addContact(contactName, contactPhone);
+            Toast.makeText(getApplicationContext(), "Contact added", Toast.LENGTH_LONG).show();
         });
         show = (Button) findViewById(R.id.show);
-        show.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                adapter = new SimpleCursorAdapter(getApplicationContext(), android.R.layout.simple_list_item_2, null,
-                        new String[]{ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME, ContactsContract.CommonDataKinds.Phone.NUMBER},
-                        new int[]{android.R.id.text1, android.R.id.text2}, 0);
-                listView.setAdapter(adapter);
-                LoaderManager.getInstance(MainActivity.this).initLoader(0, null, MainActivity.this);
-            }
+        show.setOnClickListener(v -> {
+            adapter = new SimpleCursorAdapter(getApplicationContext(), android.R.layout.simple_list_item_2, null,
+                    new String[]{ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME, ContactsContract.CommonDataKinds.Phone.NUMBER},
+                    new int[]{android.R.id.text1, android.R.id.text2}, 0);
+            listView.setAdapter(adapter);
+            LoaderManager.getInstance(MainActivity.this).initLoader(0, null, MainActivity.this);
         });
     }
 
